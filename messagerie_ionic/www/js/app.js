@@ -1,6 +1,6 @@
 angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$state) {
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -8,6 +8,9 @@ angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
         }
         if (window.StatusBar)
             StatusBar.styleDefault();
+        if (localStorage.getItem('user')) 
+            $state.go('tab.messages');
+
     });
 })
 
@@ -260,7 +263,7 @@ angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
     })
 
     ;
-
+    
     $urlRouterProvider.otherwise('/walkthrough');
-
+    
 })

@@ -6,7 +6,10 @@ angular.module('mike.services', [])
             get: function() {},
             getId: function() {},
             getEmail: function() {},
-            set: function() {},
+            set: function(data) {
+                localStorage.setItem('user',JSON.stringify(data));
+                return true;
+            },
             changePass: function() {}
         }
     }

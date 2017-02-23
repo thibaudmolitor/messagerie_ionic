@@ -4,12 +4,12 @@ angular.module('mike.controllers', [])
 
 })
 
-.controller('signCtrl', function($scope, $state, $ionicPopup) {
+.controller('signCtrl', function($scope, $state, $ionicPopup,Login) {
 	$scope.data= {};
 	$scope.login = function(){
 		if ( ($scope.data.password=="000000000") && ($scope.data.phone=="000000000")) {
 			$state.go('tab.messages');
-			// else if(angular.isDefined($scope.data.phone)){
+			// else if(!angular.isDefined($scope.data.phone)){
 				// permet le truc ifexists en php
 		}else if(($scope.data.phone)&&($scope.data.password== null)){
 			console.log('Mdp vide')
@@ -19,9 +19,25 @@ angular.module('mike.controllers', [])
 			console.log('remplissez les champs')
 		
 		}
-		
 
 	}
+	$scope.register = function(){
+		 if ($scope.data.phone == null) {
+		 	console.log('phone pas rempli')
+		 }else if ($scope.data.email == null) {
+		 	console.log('email pas rempli')
+		 }else if($scope.data.passwor == null) {
+		 	console.log('verif mdp pas rempli')
+		 }else if ($scope.data.password != $scope.data.repassword ) {
+		 	console.log('mdp pas identique')
+		 }else{
+		// ici code pour envoyer a la function qui enregistre
+			// Login.set($scope.data);
+			localStorage.setItem('user',JSON.stringify($scope.data));
+			$state.go('tab.messages');
+
+		}
+	 }
 })
 
 .controller('tabCtrl', function($scope, $state) {
