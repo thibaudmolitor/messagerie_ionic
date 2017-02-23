@@ -5,7 +5,23 @@ angular.module('mike.controllers', [])
 })
 
 .controller('signCtrl', function($scope, $state, $ionicPopup) {
+	$scope.data= {};
+	$scope.login = function(){
+		if ( ($scope.data.password=="000000000") && ($scope.data.phone=="000000000")) {
+			$state.go('tab.messages');
+			// else if(angular.isDefined($scope.data.phone)){
+				// permet le truc ifexists en php
+		}else if(($scope.data.phone)&&($scope.data.password== null)){
+			console.log('Mdp vide')
+		}else if(($scope.data.password)&&($scope.data.phone== null)){	
+			console.log('tel vide')
+		}else if(($scope.data.password !="000000000") && ($scope.data.phone !="000000000")){
+			console.log('remplissez les champs')
+		
+		}
+		
 
+	}
 })
 
 .controller('tabCtrl', function($scope, $state) {
