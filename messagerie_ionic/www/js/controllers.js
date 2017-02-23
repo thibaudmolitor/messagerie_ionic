@@ -1,11 +1,17 @@
 angular.module('mike.controllers', [])
 
+
 .controller('areacodeCtrl', function($scope, $state, $ionicModal) {
 
 })
 
-.controller('signCtrl', function($scope, $state, $ionicPopup,Login) {
+.controller('signCtrl', function($scope, $state, $ionicPopup,Login,$window) {
 	$scope.data= {};
+		$scope.goBack=function(){
+			$window.history.back();
+		}
+	
+
 	$scope.login = function(){
 		if ( ($scope.data.password=="000000000") && ($scope.data.phone=="000000000")) {
 			$state.go('tab.messages');
@@ -17,8 +23,8 @@ angular.module('mike.controllers', [])
 			console.log('tel vide')
 		}else if(($scope.data.password !="000000000") && ($scope.data.phone !="000000000")){
 			console.log('remplissez les champs')
-		
 		}
+		
 
 	}
 	$scope.register = function(){
@@ -26,7 +32,7 @@ angular.module('mike.controllers', [])
 		 	console.log('phone pas rempli')
 		 }else if ($scope.data.email == null) {
 		 	console.log('email pas rempli')
-		 }else if($scope.data.passwor == null) {
+		 }else if($scope.data.password == null) {
 		 	console.log('verif mdp pas rempli')
 		 }else if ($scope.data.password != $scope.data.repassword ) {
 		 	console.log('mdp pas identique')
@@ -112,7 +118,14 @@ angular.module('mike.controllers', [])
 
 })
 
-.controller('settingsCtrl', function($scope, $state) {
+.controller('settingsCtrl', function($scope, $state, Settings) {
+	$scope.showPopupLogout=function(){
+		localStorage.clear();
+		$state.go('login');
+	};
+	
+
+	
 
 })
 

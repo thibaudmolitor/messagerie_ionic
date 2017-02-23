@@ -17,7 +17,7 @@ angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-        .state('tab', {
+    .state('tab', {
         cache: false,
         url: '/tab',
         abstract: true,
