@@ -25,6 +25,7 @@ angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
     .state('walkthrough', {
         url: '/walkthrough',
         templateUrl: 'templates/sign/walkthrough.html',
+
     })
 
     .state('register', {
@@ -260,6 +261,6 @@ angular.module('mike', ['ionic', 'mike.services', 'mike.controllers'])
 
     ;
 
-    $urlRouterProvider.otherwise('/tab/messages');
+    $urlRouterProvider.otherwise('/walkthrough');
 
 })
